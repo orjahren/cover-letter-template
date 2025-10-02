@@ -1,0 +1,113 @@
+% Project:  TeX Cover Letter Template
+% Author:   Sid Lacy
+% https://www.overleaf.com/latex/templates/simple-cover-letter/jmkbrdnmxmbn
+
+% Forked 2025 by Oliver R. J.
+
+% EDIT info.tex, body.tex if you want to use this template.
+
+\documentclass[11pt, norsk]{letter}
+\usepackage[norsk]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\usepackage{eso-pic}
+\usepackage{charter}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{blindtext} % For lorem ipsum.
+
+\usepackage{paralist}
+\setdefaultenum{(1)}{(a)}{i.}{A.}
+
+% Font setup (use Source Sans Pro if available)
+% Uncomment if you have fontspec and Source Sans Pro installed:
+\usepackage{fontspec}
+\setmainfont{Source Sans Pro Light}[BoldFont=SourceSansPro-Regular, ItalicFont=Source Sans Pro Light Italic]
+
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\input{info}
+
+\begin{document}
+
+% Color definitions
+\definecolor{basecolor}{HTML}{000066}       % BLUE
+\definecolor{darkGrey}{HTML}{606060}
+\colorlet{linkcolor}{basecolor}
+\colorlet{accentcolor}{linkcolor!90}
+\colorlet{symbolcolor}{linkcolor!85}
+\definecolor{gr}{RGB}{225,225,225}
+
+% Section header formatting
+\titleformat{\section}
+{\Large\color{accentcolor}\raggedright}
+{}{0em}{}
+[\color{accentcolor}\titlerule]
+
+% List formatting
+\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em}
+\setlist[itemize,2]{label=\faAngleRight, nosep, leftmargin=1.5em}
+
+% Shaded header banner
+\AddToShipoutPictureBG{%
+    \color{gr}
+    \AtPageUpperLeft{\rule[-1.3in]{\paperwidth}{1.3in}}
+}
+
+% Header
+\begin{center}
+    {\fontsize{26}{0}\selectfont\scshape Søknadsbrev, \company~-- \textcolor{accentcolor}{\myname}}
+
+    \href{mailto:\myemail}{\textcolor{symbolcolor}{\faEnvelope}\enspace \textcolor{darkGrey}{\myemail}}\hfill
+    \href{https://linkedin.com/in/\mylinkedin}{\textcolor{symbolcolor}{\faLinkedinIn}\enspace \textcolor{darkGrey}{linkedin.com/in/\mylinkedin}}\hfill
+    \href{tel:\myphone}{\textcolor{symbolcolor}{\faPhone}\enspace \textcolor{darkGrey}{\myphone}}\hfill
+    \textcolor{symbolcolor}{\faMapMarker}\enspace \textcolor{darkGrey}{\mylocation}
+\end{center}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{25pt}
+
+\vspace{0.2in}
+\textcolor{darkGrey}{\today}\\
+\noindent\textcolor{accentcolor}{\rule{\linewidth}{1pt}} % Accent horizontal rule
+%\vspace{0.2in}
+
+% Opening block
+
+%\vspace{-0.1in}
+% \recipient\\
+%\company\\
+%\street\\
+%\city\\
+
+\vspace{-0.1in}\greeting~\textcolor{accentcolor}{\textbf{\company}},\ %\recipient,\\
+
+% Body
+\vspace{-0.1in}\setlength\parindent{24pt}
+\noindent\input{body}
+
+\textcolor{basecolor}{\outro}
+
+% Closer
+\vspace{0.1in}
+\vfill
+
+\begin{flushright}
+    % \textcolor{accentcolor}{\closer},
+    \closer,
+
+    %\vspace{-0.1in}\includegraphics[width=1.5in]{sig.png}\vspace{-0.1in}
+    \textcolor{basecolor}{\myname}\\
+    \textcolor{darkGrey}{\mytitle}
+\end{flushright}
+
+\hspace{40pt}
+
+\end{document}
